@@ -1,0 +1,32 @@
+{
+  "name": "web-config",
+  "version": "1.0.0",
+  "description": "用于快速生成 web 项目的相关配置如：eslint，prettier，stylelint，tsconfig 等等",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrxu0/web-config.git"
+  },
+  "keywords": [],
+  "author": "MrXu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrxu0/web-config/issues"
+  },
+  "homepage": "https://github.com/mrxu0/web-config#readme",
+  "dependencies": {
+    "chalk": "^4.0.1",
+    "fs-extra": "^10.1.0",
+    "prettier": "^2.7.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^18.8.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  }
+}
