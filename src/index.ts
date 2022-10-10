@@ -10,5 +10,5 @@ if (!hasPackage()) {
   );
 }
 
-eslintAllConfig();
+// eslintAllConfig();
 prettierAllConfig();

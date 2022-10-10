@@ -3,6 +3,10 @@ import { getPackage } from "../utils/dealPackage";
 import { debugInfo } from "../utils/debug";
 
 const devDependencies = { eslint: "^8.25.0", "eslint-config-prettier": "^8.5.0" };
+const script = {
+  // "exlint:fix": "\"{src,mock}/**/*.{vue,ts,js,tsx}\" --fix"
+  "exlint:fix": "\"src/**/*.{vue,ts,js,tsx}\" --fix"
+}
 
 // 生成 eslint 配置文件
 function generateEslintConfig() {
@@ -53,8 +57,22 @@ function packageAddEslint() {
   writeFileSync(`${process.cwd()}/package.json`, JSON.stringify(packageJson, null, 2));
 }
 
+// 给 package.json 添加修复命令
+function packageAddScript() {
+  const packageJson = getPackage();
+  packageJson.script = {
+    ...packageJson.script,
+    ...script,
+  };
+  writeFileSync(
+    `${process.cwd()}/package.json`,
+    JSON.stringify(packageJson, null, 2)
+  );
+}
+
 export function eslintAllConfig() {
   generateEslintConfig();
   packageAddEslint();
-  debugInfo(`eslint 添加成功，新增依赖为: ${JSON.stringify(devDependencies)}`)
+  packageAddScript();
+  debugInfo(`eslint 添加成功，新增依赖为: ${JSON.stringify(devDependencies)}，新添加的命令为: ${JSON.stringify(script)}`)
 }
