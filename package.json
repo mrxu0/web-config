@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node src/index.ts"
+    "dev": "ts-node src/index.ts",
+    "exlint:fix": "\"src/**/*.{vue,ts,js,tsx}\" --fix",
+    "prettier:fix": "prettier --write src/**",
+    "stylelint:fix": "stylelint \"src/**/*.{css,scss,sass,vue}\""
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,13 @@
     "prettier": "^2.7.1"
   },
   "devDependencies": {
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint": "^14.13.0",
+    "stylelint-config-recommended-scss": "^7.0.0",
+    "stylelint-config-recommended-vue": "^1.4.0",
+    "prettier": "^2.7.1",
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^18.8.3",
     "ts-node": "^10.9.1",

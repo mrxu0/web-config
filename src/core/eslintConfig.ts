@@ -1,9 +1,10 @@
 import { writeFileSync } from "fs";
+import { packageConsole } from "../utils";
 import { getPackage } from "../utils/dealPackage";
 import { debugInfo } from "../utils/debug";
 
 const devDependencies = { eslint: "^8.25.0", "eslint-config-prettier": "^8.5.0" };
-const script = {
+const scripts = {
   // "exlint:fix": "\"{src,mock}/**/*.{vue,ts,js,tsx}\" --fix"
   "exlint:fix": "\"src/**/*.{vue,ts,js,tsx}\" --fix"
 }
@@ -60,9 +61,9 @@ function packageAddEslint() {
 // 给 package.json 添加修复命令
 function packageAddScript() {
   const packageJson = getPackage();
-  packageJson.script = {
-    ...packageJson.script,
-    ...script,
+  packageJson.scripts = {
+    ...packageJson.scripts,
+    ...scripts,
   };
   writeFileSync(
     `${process.cwd()}/package.json`,
@@ -74,5 +75,6 @@ export function eslintAllConfig() {
   generateEslintConfig();
   packageAddEslint();
   packageAddScript();
-  debugInfo(`eslint 添加成功，新增依赖为: ${JSON.stringify(devDependencies)}，新添加的命令为: ${JSON.stringify(script)}`)
+  packageConsole(devDependencies);
+  packageConsole(scripts, ":");
 }

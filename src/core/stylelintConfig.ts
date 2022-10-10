@@ -4,24 +4,21 @@ import { debugInfo } from "../utils/debug";
 import { packageConsole } from "../utils/index";
 
 const devDependencies = {
-  prettier: "^2.7.1",
+  "stylelint-config-recess-order": "^3.0.0",
+  "stylelint": "^14.13.0",
+  "stylelint-config-recommended-scss": "^7.0.0",
+  "stylelint-config-recommended-vue": "^1.4.0",
 };
 const scripts = {
-  "prettier:fix": "prettier --write src/**",
+  "stylelint:fix": "stylelint \"src/**/*.{css,scss,sass,vue}\"",
 };
 
 // 生成 eslint 配置文件
 function generatePrettier() {
   let text = {
-    semi: true,
-    tabWidth: 2,
-    "jsx-single-quote": false,
-    "single-quote": false,
-    "arrow-parens": "always",
-    bracketSpacing: true,
-    endOfLine: "lf",
+    extends: ['stylelint-config-recess-order', 'stylelint-config-recommended-vue/scss'],
   };
-  writeFileSync(`${process.cwd()}/.prettierrc`, JSON.stringify(text, null, 2));
+  writeFileSync(`${process.cwd()}/.stylelint.config.js`, `module.exports = ${JSON.stringify(text, null, 2)}`);
 }
 
 // 给 package.json 添加依赖
@@ -50,7 +47,7 @@ function packageAddScript() {
   );
 }
 
-export function prettierAllConfig() {
+export function stylelintAllConfig() {
   generatePrettier();
   packageAddDep();
   packageAddScript();
