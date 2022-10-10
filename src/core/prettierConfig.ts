@@ -10,7 +10,7 @@ const scripts = {
   "prettier:fix": "prettier --write src/**",
 };
 
-// 生成 eslint 配置文件
+/** 生成 eslint 配置文件 */
 function generatePrettier() {
   let text = {
     semi: true,
@@ -24,7 +24,7 @@ function generatePrettier() {
   writeFileSync(`${process.cwd()}/.prettierrc`, JSON.stringify(text, null, 2));
 }
 
-// 给 package.json 添加依赖
+/** 给 package.json 添加依赖 */
 function packageAddDep() {
   const packageJson = getPackage();
   packageJson.devDependencies = {
@@ -37,7 +37,7 @@ function packageAddDep() {
   );
 }
 
-// 给 package.json 添加修复命令
+/** 给 package.json 添加修复命令 */
 function packageAddScript() {
   const packageJson = getPackage();
   packageJson.scripts = {
@@ -50,6 +50,7 @@ function packageAddScript() {
   );
 }
 
+/** 所有配置 */
 export function prettierAllConfig() {
   generatePrettier();
   packageAddDep();

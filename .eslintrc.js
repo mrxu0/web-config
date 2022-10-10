@@ -2,6 +2,11 @@
 module.exports = {
   root: true,
   extends: [ 'prettier' ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 11,
+    sourceType: 'module'
+  },
   overrides: [
     {
       files: ["*.ts", "*.tsx"],
@@ -17,7 +22,6 @@ module.exports = {
     },
   ],
   rules: {
-    "id-match": ["error", "^[A-Za-z_$]\w*(?<![0-9]{3,})$"],
     "valid-jsdoc": 2,
     "require-jsdoc": [
       "error",

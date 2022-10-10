@@ -32,13 +32,12 @@ const debugInfo = (msg: string) => {
 
 /**
  * debug 强调
- * @param type 类型
  * @param msg 信息
  */
-
 const debugprocess = (msg: string) => {
   debugSwitch && log(chalk.hex('#646cff')(`[web-config]:`) + chalk.yellow(msg));
 };
+
 /**
  * debug warning信息
  * @param type 类型
@@ -48,6 +47,10 @@ const debugWarning = (msg: string) => {
   log(chalk.hex('#646cff')(`[web-config]:`) + chalk.yellow(msg));
 };
 
+/**
+ * debug txt信息
+ * @param msg 信息
+ */
 const debugTxt = (msg: string) => {
   log(chalk.hex('#646cff')(`[web-config]:`) + chalk.hex('#5c6d82')(msg));
 };

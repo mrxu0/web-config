@@ -10,18 +10,18 @@ const devDependencies = {
   "stylelint-config-recommended-vue": "^1.4.0",
 };
 const scripts = {
-  "stylelint:fix": "stylelint \"src/**/*.{css,scss,sass,vue}\"",
+  "stylelint:fix": "stylelint \"src/**/*.{css,scss,sass,vue}\" --fix",
 };
 
-// 生成 eslint 配置文件
+/** 生成 eslint 配置文件 */
 function generatePrettier() {
   let text = {
     extends: ['stylelint-config-recess-order', 'stylelint-config-recommended-vue/scss'],
   };
-  writeFileSync(`${process.cwd()}/.stylelint.config.js`, `module.exports = ${JSON.stringify(text, null, 2)}`);
+  writeFileSync(`${process.cwd()}/stylelint.config.js`, `module.exports = ${JSON.stringify(text, null, 2)}`);
 }
 
-// 给 package.json 添加依赖
+/** 给 package.json 添加依赖 */
 function packageAddDep() {
   const packageJson = getPackage();
   packageJson.devDependencies = {
@@ -34,7 +34,7 @@ function packageAddDep() {
   );
 }
 
-// 给 package.json 添加修复命令
+/** 给 package.json 添加修复命令 */
 function packageAddScript() {
   const packageJson = getPackage();
   packageJson.scripts = {
@@ -47,6 +47,7 @@ function packageAddScript() {
   );
 }
 
+/** 所有配置 */
 export function stylelintAllConfig() {
   generatePrettier();
   packageAddDep();
