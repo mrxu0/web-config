@@ -1,5 +1,8 @@
 import { writeFileSync } from "fs";
 import { getPackage } from "../utils/dealPackage";
+import { debugInfo } from "../utils/debug";
+
+const devDependencies = { eslint: "^8.25.0", "eslint-config-prettier": "^8.5.0" };
 
 // 生成 eslint 配置文件
 function generateEslintConfig() {
@@ -45,13 +48,13 @@ module.exports = {
 }
 // 给 package.json 添加 eslint 相关依赖
 function packageAddEslint() {
-  const deps = { eslint: "^8.25.0", "eslint-config-prettier": "^8.5.0" };
   const packageJson = getPackage();
-  packageJson.dependencies = { ...deps, ...packageJson.dependencies};
-  writeFileSync(`${process.cwd()}/.package.json`, JSON.stringify(packageJson, null, 2));
+  packageJson.devDependencies = { ...devDependencies, ...packageJson.devDependencies};
+  writeFileSync(`${process.cwd()}/package.json`, JSON.stringify(packageJson, null, 2));
 }
 
 export function eslintAllConfig() {
   generateEslintConfig();
   packageAddEslint();
+  debugInfo(`eslint 添加成功，新增依赖为: ${JSON.stringify(devDependencies)}`)
 }
