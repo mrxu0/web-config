@@ -6,9 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node src/index.ts",
+    "build": "tsc",
     "eslint:fix": "eslint \"src/**/*.{vue,ts,js,tsx}\" --fix",
     "prettier:fix": "prettier --write src/**",
-    "stylelint:fix": "stylelint \"src/**/*.{css,scss,sass,vue}\" --fix"
+    "stylelint:fix": "stylelint \"src/**/*.{css,scss,sass,vue}\" --fix",
+    "all:fix": "npm run eslint:fix && npm run prettier:fix && npm run stylelint:fix"
   },
   "repository": {
     "type": "git",
