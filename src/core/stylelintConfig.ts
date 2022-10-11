@@ -21,6 +21,9 @@ function generatePrettier() {
       "stylelint-config-recess-order",
       "stylelint-config-recommended-vue/scss",
     ],
+    rules: {
+      "no-empty-source": null
+    }
   };
   writeFileSync(
     `${process.cwd()}/stylelint.config.js`,
