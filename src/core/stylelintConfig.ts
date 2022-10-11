@@ -8,6 +8,7 @@ const devDependencies = {
   stylelint: "^14.13.0",
   "stylelint-config-recommended-scss": "^7.0.0",
   "stylelint-config-recommended-vue": "^1.4.0",
+  "postcss-html": "^1.5.0",
 };
 const scripts = {
   "stylelint:fix": 'stylelint "src/**/*.{css,scss,sass,vue}" --fix',

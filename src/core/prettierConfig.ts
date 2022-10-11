@@ -15,9 +15,9 @@ function generatePrettier() {
   let text = {
     semi: true,
     tabWidth: 2,
-    "jsx-single-quote": false,
-    "single-quote": false,
-    "arrow-parens": "always",
+    jsxSingleQuote: false,
+    singleQuote: false,
+    arrowParens: "always",
     bracketSpacing: true,
     endOfLine: "lf",
   };
