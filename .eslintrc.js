@@ -1,9 +1,13 @@
 module.exports = {
   "root": true,
   "extends": [
-    "plugin:vue/vue3-essential",
     "prettier"
   ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
   "overrides": [
     {
       "files": [
@@ -41,12 +45,6 @@ module.exports = {
       "error",
       "as-needed"
     ],
-    "no-nested-ternary": 2,
-    "vue/multi-word-component-names": "off"
-  },
-  "parser": "vue-eslint-parser",
-  "parserOptions": {
-    "parser": "@typescript-eslint/parser",
-    "sourceType": "module"
+    "no-nested-ternary": 2
   }
 }

@@ -1,0 +1,14 @@
+
+.vscode
+node_modules
+dist
+lib
+es
+esm
+docs
+**/__test__/**
+env.js
+
+login-sdk-oversea.js
+
+components.d.ts

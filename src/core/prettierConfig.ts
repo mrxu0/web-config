@@ -10,7 +10,7 @@ const scripts = {
   "prettier:fix": "prettier --write src/**",
 };
 
-/** 生成 eslint 配置文件 */
+/** 生成 prettier 配置文件 */
 function generatePrettier() {
   let text = {
     semi: true,
@@ -22,6 +22,33 @@ function generatePrettier() {
     endOfLine: "lf",
   };
   writeFileSync(`${process.cwd()}/.prettierrc`, JSON.stringify(text, null, 2));
+  writeFileSync(
+    `${process.cwd()}/.prettierignore`,
+    `
+**/*.svg
+package.json
+.umi
+.umi-production
+/dist
+/build
+/public
+.gitignore
+.prettierignore
+.eslintignore
+.stylelintignore
+.dockerignore
+.editorconfig
+Dockerfile*
+LICENSE
+.eslintcache
+.DS_Store
+yarn.lock
+package-lock.json
+yarn-error.log
+.history
+CNAME
+    `
+  );
 }
 
 /** 给 package.json 添加依赖 */

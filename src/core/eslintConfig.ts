@@ -74,6 +74,24 @@ function generateEslintConfig() {
     `${process.cwd()}/.eslintrc.js`,
     `module.exports = ${JSON.stringify(obj, null, 2)}`
   );
+
+  writeFileSync(
+    `${process.cwd()}/.eslintignore`,
+    `
+.vscode
+node_modules
+dist
+lib
+es
+esm
+docs
+**/__test__/**
+env.js
+
+login-sdk-oversea.js
+
+components.d.ts`
+  );
 }
 
 /** 给 package.json 添加 eslint 相关依赖 */
