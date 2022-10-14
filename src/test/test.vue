@@ -10,9 +10,23 @@
 const a = () => {};
 </script>
 
+<style>
+h1 {
+  position: absolute;
+  display: block;
+}
+</style>
+
 <style lang="scss">
 h1 {
   position: absolute;
   display: block;
+}
+</style>
+
+<style lang="less">
+h1 {
+  display: block;
+  position: absolute;
 }
 </style>

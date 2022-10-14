@@ -23,6 +23,16 @@ export function isVue() {
   }
 }
 
+/** 判断项目是否是某个项目 */
+export function isProject(val: string) {
+  const packageJson = getPackage();
+  if (packageJson?.dependencies?.[val] || packageJson?.devDependencies?.[val]) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 /** 判断项目是否是 react 项目 */
 export function isReact() {
   const packageJson = getPackage();

@@ -1,30 +1,48 @@
 import { writeFileSync } from "fs";
 import { getPackage } from "../utils/dealPackage";
 import { debugInfo } from "../utils/debug";
-import { packageConsole } from "../utils/index";
+import { isProject, packageConsole } from "../utils/index";
 
-const devDependencies = {
+const devDependencies: Record<string, string> = {
   "stylelint-config-recess-order": "^3.0.0",
-  stylelint: "^14.13.0",
-  "stylelint-config-recommended-scss": "^7.0.0",
-  "stylelint-config-recommended-vue": "^1.4.0",
   "postcss-html": "^1.5.0",
+  stylelint: "^14.13.0",
+};
+let text = {
+  extends: ["stylelint-config-recess-order"],
+  rules: {
+    "no-empty-source": null,
+  },
 };
 const scripts = {
-  "stylelint:fix": 'stylelint "src/**/*.{css,scss,sass,vue}" --fix',
+  "stylelint:fix": 'stylelint "src/**/*.{css,scss,sass,less,vue}" --fix',
 };
 
-/** 生成 eslint 配置文件 */
+if (isProject("scss")) {
+  devDependencies["stylelint-config-recommended-scss"] = "^7.0.0";
+  text.extends.push("stylelint-config-recommended-scss");
+  if (isProject("vue")) {
+    devDependencies["stylelint-config-recommended-vue"] = "^1.4.0";
+    text.extends.push("stylelint-config-recommended-vue/scss");
+  }
+}
+
+// if (isProject("less")) {
+//   devDependencies["stylelint-config-recommended-less"] = "^1.0.4";
+//   text.extends.push("stylelint-config-recommended-less");
+//   if (isProject("vue")) {
+//     devDependencies["stylelint-config-recommended-vue"] = "^1.4.0";
+//     text.extends.push("stylelint-config-recommended-vue/less");
+//   }
+// }
+
+if (isProject("vue")) {
+  devDependencies["stylelint-config-recommended-vue"] = "^1.4.0";
+  text.extends.push("stylelint-config-recommended-vue");
+}
+
+/** 生成 stylelint 配置文件 */
 function generatePrettier() {
-  let text = {
-    extends: [
-      "stylelint-config-recess-order",
-      "stylelint-config-recommended-vue/scss",
-    ],
-    rules: {
-      "no-empty-source": null
-    }
-  };
   writeFileSync(
     `${process.cwd()}/stylelint.config.js`,
     `module.exports = ${JSON.stringify(text, null, 2)}`
